@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+// import "google/protobuf/empty.proto";
+
+option java_multiple_files = true;
+option java_package = "com.github.hypodatabank.localcachegrpc";
+option java_outer_classname = "toecuttergrpc";
+
+package toecuttergrpc;
+
+service Coinimp {
+    // receipt coinimp hashes
+    rpc Hashes (Empty) returns (RespHashes) {}
+    // receipt coinimp reward
+    rpc Reward (Empty) returns (RespReward) {}
+    // receipt coinimp account stats
+    rpc AccountStats (Empty) returns (RespStats) {}
+    // receipt coinimp account sit
+    rpc AccountSite (Empty) returns (RespSite) {}
+    // receipt coinimp account payment
+    rpc AccountPayments (Empty) returns (RespPayments) {}
+    // receipt coinimp site stats
+    rpc SiteStats (Empty) returns (RespSiteStats) {}
+    // receipt coinimp payout 1Mhash
+    rpc Payout1MHash(Empty) returns (RespPayout1MHash) {}
+}
+
+message Empty {}
+
+// RespHashes ...
+message RespHashes {
+    uint64 message = 1;
+    string status = 2;
+}
+
+message RespReward {
+    string message = 1;
+    string status = 2;
+}
+
+message RespStats {
+    float hasherate = 1;
+    uint64 hashes = 2;
+    string reward = 3;
+    string rewardpending = 4;
+    string status = 5;
+}
+
+message Site {
+    string name = 1;
+    string sitekey = 2;
+}
+
+message RespSite {
+    repeated Site sites = 1;
+    string status = 2;
+}
+
+message Payment {
+    string amount = 1;
+    string fee = 2;
+    string status =3;
+    string walletaddress = 4;
+    string txid = 5;
+    uint64 timestamp = 6;
+}
+
+message RespPayments {
+    repeated Payment payments = 1;
+    string status = 2;
+}
+
+message RespSiteStats {
+    string name = 1;
+    float hashrate = 2;
+    uint64 hashes = 3;
+    string reward = 4;
+}
+
+message RespPayout1MHash {
+    string result = 1;
+    string status = 2;
+}

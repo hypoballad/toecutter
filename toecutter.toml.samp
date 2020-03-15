@@ -1,0 +1,8 @@
+[main]
+curl = "curl"
+url = "http://www.coinimp.com/api/v2/"
+site-key = ""
+api-public = ""
+api-private = ""
+schedule = "@every 5m"
+sleep = 10
